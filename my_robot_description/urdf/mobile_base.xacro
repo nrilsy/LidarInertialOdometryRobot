@@ -70,6 +70,7 @@
     <xacro:wheel_link prefix="right_back" />
     <xacro:wheel_link prefix="left_front" />
     <xacro:wheel_link prefix="left_back" />
+    <!-- # I added this. -->
 
     <joint name="base_joint" type="fixed">
         <parent link="base_footprint" />
