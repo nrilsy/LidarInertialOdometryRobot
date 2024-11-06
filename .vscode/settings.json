@@ -1,0 +1,20 @@
+{
+    "python.autoComplete.extraPaths": [
+        "/home/nuri/advanced_ros2_ws/install/my_robot_interfaces/local/lib/python3.10/dist-packages",
+        "/home/nuri/advanced_ros2_ws/install/lifecycle_py/lib/python3.10/site-packages",
+        "/home/nuri/Repo/ROS/TurtleBot_Examples/Example1/build/my_robot_controller",
+        "/home/nuri/Repo/ROS/TurtleBot_Examples/Example1/install/my_robot_controller/lib/python3.10/site-packages",
+        "/home/nuri/Repo/rosDeneme/install/tcp_server_pkg/lib/python3.10/site-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ],
+    "python.analysis.extraPaths": [
+        "/home/nuri/advanced_ros2_ws/install/my_robot_interfaces/local/lib/python3.10/dist-packages",
+        "/home/nuri/advanced_ros2_ws/install/lifecycle_py/lib/python3.10/site-packages",
+        "/home/nuri/Repo/ROS/TurtleBot_Examples/Example1/build/my_robot_controller",
+        "/home/nuri/Repo/ROS/TurtleBot_Examples/Example1/install/my_robot_controller/lib/python3.10/site-packages",
+        "/home/nuri/Repo/rosDeneme/install/tcp_server_pkg/lib/python3.10/site-packages",
+        "/opt/ros/humble/lib/python3.10/site-packages",
+        "/opt/ros/humble/local/lib/python3.10/dist-packages"
+    ]
+}
