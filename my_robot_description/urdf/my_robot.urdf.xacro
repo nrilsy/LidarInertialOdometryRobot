@@ -4,15 +4,16 @@
 
     <!-- Properties -->
     <xacro:include filename="common_properties.xacro" />
-
+    
+    <!-- ROS2 Control -->
+    <xacro:include filename="my_robot_ros2_control.xacro"/>
+    
     <!-- Robot URDF -->
     <xacro:include filename="mobile_base.xacro" />
 
     <!-- Include Gazebo Parameters -->
     <xacro:include filename="mobile_base_gazebo.xacro" />
 
-    <!-- ROS2 Control -->
-    <xacro:include filename="my_robot_ros2_control.xacro"/>
 
 
 </robot>

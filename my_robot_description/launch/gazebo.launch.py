@@ -29,7 +29,12 @@ def generate_launch_description():
     robot_state_publisher_node = Node(
         package="robot_state_publisher",
         executable="robot_state_publisher",
-        parameters=[{'robot_description': robot_description}]
+        parameters=[{"robot_description": robot_description}]
+    )
+
+    gazebo_resource_path = SetEnvironmentVariable(
+        name="GZ_SIM_RESOURCE_PATH",
+        value=[str(Path(robot_description_dir).parent.resolve())]
     )
 
     joint_state_publisher_gui_node = Node(
@@ -37,10 +42,6 @@ def generate_launch_description():
         executable="joint_state_publisher_gui"
     )
 
-    gazebo_resource_path = SetEnvironmentVariable(
-        name="GZ_SIM_RESOURCE_PATH",
-        value=[str(Path(robot_description_dir).parent.resolve())]
-    )
 
     rviz2_node = Node(
         package="rviz2",

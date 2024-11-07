@@ -11,6 +11,7 @@
     
 
     <gazebo reference="right_front_wheel_link">
+        <!-- Buraya bir sey ekledim -->
         <material>Gazebo/Grey</material>
         <mu1>10000000000000.0</mu1>
         <mu2>10000000000000.0</mu2>
