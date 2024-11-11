@@ -1,20 +1,31 @@
 controller_manager:
   ros__parameters:
-    update_rate: 100
+    update_rate: 50
     use_sim_time: true
 
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
     
-    simple_velocity_controller:
-      type: velocity_controllers/JointGroupVelocityController
-
+    my_robot_controller:
+      type: diff_drive_controller/DiffDriveController
 
 
 simple_velocity_controller:
   ros__parameters:
+    type: velocity_controllers/JointGroupVelocityController
     joints:
-      -base_right_front_wheel_joint
-      -base_right_back_wheel_joint
-      -base_left_front_wheel_joint
-      -base_left_back_wheel_joint
+      - base_right_front_wheel_joint
+      - base_right_back_wheel_joint
+      - base_left_front_wheel_joint
+      - base_left_back_wheel_joint
+
+my_robot_controller:
+  ros__parameters:
+    type: diff_drive_controller/DiffDriveController
+    left_wheel_names: ['base_left_front_wheel_joint', 'base_left_back_wheel_joint']
+    right_wheel_names: ['base_right_front_wheel_joint', 'base_right_back_wheel_joint']
+    wheel_separation: 0.15
+    wheel_radius: 0.034
+    cmd_vel_timeout: 1.0
+    base_frame_id: base_footprint
+    enable_odom_tf: true

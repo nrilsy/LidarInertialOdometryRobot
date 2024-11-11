@@ -57,7 +57,10 @@
 
     <gazebo>
         <plugin filename="ign_ros2_control-system" name="ign_ros2_control::IgnitionROS2ControlPlugin">
-            <parameters>$(find my_robot_controller)/config/my_robot_controllers.yaml</parameters>            
+            <robot_param>robot_description</robot_param>
+            <robot_param_node>robot_state_publisher</robot_param_node>
+            <parameters>$(find my_robot_controller)/config/my_robot_controllers.yaml</parameters>     
+            <controller_manager_name>controller_manager</controller_manager_name>       
         </plugin>
     </gazebo>
 
