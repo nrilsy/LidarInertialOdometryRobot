@@ -17,7 +17,7 @@ def generate_launch_description():
     joy_teleop = Node(
         package="joy_teleop",
         executable="joy_teleop",
-        parameters=[os.path.join(get_package_share_directory("bumperbot_controller"), "config", "joy_teleop.yaml"),
+        parameters=[os.path.join(get_package_share_directory("my_robot_controller"), "config", "joy_teleop.yaml"),
                     {"use_sim_time": LaunchConfiguration("use_sim_time")}],
     )
 
@@ -25,7 +25,7 @@ def generate_launch_description():
         package="joy",
         executable="joy_node",
         name="joystick",
-        parameters=[os.path.join(get_package_share_directory("bumperbot_controller"), "config", "joy_config.yaml"),
+        parameters=[os.path.join(get_package_share_directory("my_robot_controller"), "config", "joy_config.yaml"),
                     {"use_sim_time": LaunchConfiguration("use_sim_time")}]
     )
 

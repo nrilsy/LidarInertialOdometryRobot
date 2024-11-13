@@ -68,14 +68,15 @@ def generate_launch_description():
         executable="parameter_bridge",
         arguments=[
             "/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock",
+            # "/scan@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan",
         ]
     )
 
     return LaunchDescription([
+        gz_ros2_bridge,
         model_arg,
         gazebo_resource_path,
         robot_state_publisher_node,
         gazebo,
         gz_spawn_entity,
-        gz_ros2_bridge,
     ])

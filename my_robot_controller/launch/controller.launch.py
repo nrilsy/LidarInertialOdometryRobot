@@ -10,14 +10,7 @@ import os
 def generate_launch_description():
 
     # Define the path to your configuration file
-    config_file_path = os.path.join(
-        get_package_share_directory('my_robot_controller'),
-        'config',
-        'my_robot_controllers.yaml'
-    )
 
-
-    use_sim_time = LaunchConfiguration('use_sim_time', default='true')
 
 
     joint_state_broadcaster_spawner = Node(
@@ -26,9 +19,8 @@ def generate_launch_description():
         arguments=[
             "joint_state_broadcaster",
             "--controller-manager",
-            "/controller_manager"
+            "/controller_manager",
         ],
-        output="screen"
         # This is just a change
     )
 
@@ -40,9 +32,8 @@ def generate_launch_description():
         arguments=[
             "my_robot_controller",
             "--controller-manager",
-            "/controller_manager"
+            "/controller_manager",
         ],  # Controller name from YAML config
-        output='screen',
     )
 
 
