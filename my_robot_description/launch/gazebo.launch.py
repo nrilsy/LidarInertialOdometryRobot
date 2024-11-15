@@ -4,7 +4,7 @@ from ament_index_python.packages import get_package_share_directory
 
 from launch import LaunchDescription
 from launch.actions import DeclareLaunchArgument, IncludeLaunchDescription, SetEnvironmentVariable
-from launch.substitutions import Command, LaunchConfiguration
+from launch.substitutions import Command, LaunchConfiguration, PythonExpression, PathJoinSubstitution
 from launch.launch_description_sources import PythonLaunchDescriptionSource
 
 from launch_ros.actions import Node
@@ -19,6 +19,16 @@ def generate_launch_description():
                                         ),
                                       description="Absolute path to robot urdf file"
     )
+
+    world_name_arg = DeclareLaunchArgument(name="world_name", default_value="test_world")
+
+    world_path = PathJoinSubstitution([
+            my_robot_description,
+            "worlds",
+            PythonExpression(expression=["'", LaunchConfiguration("world_name"), "'", " + '.world'"])
+        ]
+    )
+
 
     gazebo_resource_path = SetEnvironmentVariable(
         name="GZ_SIM_RESOURCE_PATH",
@@ -49,11 +59,10 @@ def generate_launch_description():
     gazebo = IncludeLaunchDescription(
                 PythonLaunchDescriptionSource([os.path.join(
                     get_package_share_directory("ros_gz_sim"), "launch"), "/gz_sim.launch.py"]),
-                launch_arguments=[
-                    ("gz_args", [" -v 4", " -r", " empty.sdf"]
-                    )
-                ]
-             )
+                launch_arguments={
+                    "gz_args": PythonExpression(["'", world_path, " -v 4 -r'"])
+                }.items()
+            )
 
     gz_spawn_entity = Node(
         package="ros_gz_sim",
@@ -68,12 +77,17 @@ def generate_launch_description():
         executable="parameter_bridge",
         arguments=[
             "/clock@rosgraph_msgs/msg/Clock[gz.msgs.Clock",
-            # "/scan@sensor_msgs/msg/LaserScan@gz.msgs.LaserScan",
+            "/scan@sensor_msgs/msg/LaserScan[gz.msgs.LaserScan",
+            "/imu@sensor_msgs/msg/Imu[gz.msgs.IMU",
+        ],
+        remappings=[
+            ('/imu', '/imu/out'),
         ]
     )
 
     return LaunchDescription([
         gz_ros2_bridge,
+        world_name_arg,
         model_arg,
         gazebo_resource_path,
         robot_state_publisher_node,
