@@ -1,0 +1,3 @@
+lidar_odometry_node:
+  ros__parameters:
+    odom_topic_name: odom_lidar

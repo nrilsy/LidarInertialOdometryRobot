@@ -150,7 +150,7 @@
     <joint name="base_imu_joint" type="fixed">
         <parent link="base_link" />
         <child link="imu_link" />
-        <origin xyz="${base_length / 2.0 - imu_length} ${base_width / 2.0 - imu_width / 2.0} ${base_height}" rpy="0 0 0" />
+        <origin xyz="${base_length / 2.0 - imu_length} ${base_width / 2.0 - imu_width / 2.0} ${base_height}" rpy="3.1415 0 0" />
         <axis xyz="0 0 0" />
     </joint>
 

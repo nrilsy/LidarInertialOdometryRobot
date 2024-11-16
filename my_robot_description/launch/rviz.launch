@@ -1,0 +1,4 @@
+<?xml version="1.0"?>
+<launch>
+  <node name="rviz2" pkg="rviz2" type="rviz2" args="-d $(find my_robot_description)/rviz/urdf_config.rviz" />
+</launch>
