@@ -9,6 +9,14 @@ controller_manager:
     my_robot_controller:
       type: diff_drive_controller/DiffDriveController
 
+    # position_controller:
+    #   type: position_controllers/JointGroupPositionController
+
+# position_controller:
+#   ros__parameters:
+#     joints:
+#       - 
+
 
 my_robot_controller:
   ros__parameters:
@@ -23,3 +31,4 @@ my_robot_controller:
     base_frame_id: base_footprint
     wheels_per_side: 2
     enable_odom_tf: false
+    open_loop: true

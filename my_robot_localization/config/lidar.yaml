@@ -1,3 +1,4 @@
 lidar_odometry_node:
   ros__parameters:
+    use_sim_time: true
     odom_topic_name: odom_lidar
