@@ -6,24 +6,14 @@ controller_manager:
     joint_state_broadcaster:
       type: joint_state_broadcaster/JointStateBroadcaster
     
-    my_robot_controller:
+    two_wheel_controller:
       type: diff_drive_controller/DiffDriveController
 
-    # position_controller:
-    #   type: position_controllers/JointGroupPositionController
 
-# position_controller:
-#   ros__parameters:
-#     joints:
-#       - 
-
-
-my_robot_controller:
+two_wheel_controller:
   ros__parameters:
-    type: diff_drive_controller/DiffDriveController
-    left_wheel_names: ['base_left_front_wheel_joint']
-    right_wheel_names: ['base_right_front_wheel_joint']
-
+    left_wheel_names: 'base_left_front_wheel_joint'
+    right_wheel_names: 'base_right_front_wheel_joint'
 
     wheel_separation: 0.15
     wheel_radius: 0.034

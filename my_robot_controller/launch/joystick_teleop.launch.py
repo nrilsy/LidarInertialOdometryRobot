@@ -10,7 +10,7 @@ from launch_ros.actions import Node
 
 def generate_launch_description():
 
-    use_sim_time_arg = DeclareLaunchArgument(name="use_sim_time", default_value="True",
+    use_sim_time_arg = DeclareLaunchArgument(name="use_sim_time", default_value="false",
                                       description="Use simulated time"
     )
 

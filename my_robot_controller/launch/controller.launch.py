@@ -36,6 +36,16 @@ def generate_launch_description():
         ],  # Controller name from YAML config
     )
 
+    two_wheel_controller = Node(
+        package='controller_manager',
+        executable='spawner',
+        arguments=[
+            "two_wheel_controller",
+            "--controller-manager",
+            "/controller_manager",
+        ],  # Controller name from YAML config
+    )
+
 
 
     return LaunchDescription([
@@ -45,5 +55,6 @@ def generate_launch_description():
             description='Use simulation (Gazebo) clock if true'
         ),
         joint_state_broadcaster_spawner,
-        robot_controller
+        # robot_controller,
+        two_wheel_controller
     ])

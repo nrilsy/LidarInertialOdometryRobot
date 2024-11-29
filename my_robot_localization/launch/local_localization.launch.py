@@ -23,7 +23,23 @@ def generate_launch_description():
         parameters=[os.path.join(get_package_share_directory("my_robot_localization"), "config", "ekf.yaml")]
     )
 
+    rf2o_odometry = Node(
+        package='rf2o_laser_odometry',
+                executable='rf2o_laser_odometry_node',
+                name='rf2o_laser_odometry',
+                output='screen',
+                parameters=[{
+                    'laser_scan_topic' : '/scan',
+                    'odom_topic' : '/odom_rf2o',
+                    'publish_tf' : True,
+                    'base_frame_id' : 'base_footprint',
+                    'odom_frame_id' : 'odom',
+                    'init_pose_from_topic' : '',
+                    'freq' : 5.0}],
+                )
+
     return LaunchDescription([
+        # rf2o_odometry,
         lidar_odometry_node,
         robot_localization,
     ])
