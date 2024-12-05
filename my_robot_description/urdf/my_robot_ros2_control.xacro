@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+<robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+    
+    <ros2_control name="RobotSystem" type="actuator">
+        <!-- ros2_control Gazebo -->
+
+        <xacro:if value="$(arg is_sim)">
+            <!-- <xacro:if value="$(arg is_ignition)">
+                <hardware>
+                    <plugin>ign_ros2_control/IgnitionSystem</plugin>
+                </hardware>
+            </xacro:if>
+
+            <xacro:unless value="$(arg is_ignition)">
+                <hardware>
+                    <plugin>gz_ros2_control/GazeboSimSystem</plugin>
+                </hardware>
+            </xacro:unless> -->
+        </xacro:if>
+
+        <xacro:unless value="$(arg is_sim)">
+            <hardware>
+                <plugin>ros2_control_hardware/DCMotorHardwareInterface</plugin>
+                <param name="wheel_separation">0.15</param>
+                <param name="wheel_radius">0.034</param>
+            </hardware>
+        </xacro:unless>
+
+
+        <!-- ROS 2 Humble -->
+        
+        
+        <joint name="base_right_front_wheel_joint">
+            <command_interface name="velocity">
+                <param name="min">-1</param>
+                <param name="max">1</param>
+            </command_interface>
+        
+            <state_interface name="position">0</state_interface>
+        </joint>
+        
+        <!-- <joint name="base_right_back_wheel_joint">
+            <command_interface name="velocity">
+                <param name="min">-1</param>
+                <param name="max">1</param>
+            </command_interface>
+            <state_interface name="position">0</state_interface>
+        </joint> -->
+        
+        <joint name="base_left_front_wheel_joint">
+            <command_interface name="velocity">
+                <param name="min">-1</param>
+                <param name="max">1</param>
+            </command_interface>
+            <state_interface name="position">0</state_interface>
+        </joint>
+        
+        <!-- <joint name="base_left_back_wheel_joint">
+            <command_interface name="velocity">
+                <param name="min">-1</param>
+                <param name="max">1</param>
+            </command_interface>
+            <state_interface name="position">0</state_interface>
+        </joint> -->
+
+    </ros2_control>
+
+</robot>    
